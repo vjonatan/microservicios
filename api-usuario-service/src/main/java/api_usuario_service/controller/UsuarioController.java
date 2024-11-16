@@ -45,7 +45,7 @@ public class UsuarioController {
         Usuario usuario = Usuario.builder()
                 .nombre("Jonatan")
                 .email("jonatan@gmail.com")
-                .informacion("Este usuario se crea por defecto cuando un servicio se cae")
+                .informacion("Este usuario se crea por defecto cuando un servicio se cae.")
                 .build();
 
         return new ResponseEntity<>(usuario, HttpStatus.OK);
