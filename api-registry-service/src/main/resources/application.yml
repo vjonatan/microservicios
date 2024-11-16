@@ -1,0 +1,8 @@
+server:
+  port: 8761
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false # este ms va a ser el servidor por lo que va en false
+    fetch-registry: false       # este ms al funcionar de servidor, no es necesario que se incluya en el fetch del eureka
