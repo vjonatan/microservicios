@@ -4,6 +4,7 @@ import api_usuario_service.entity.Usuario;
 import api_usuario_service.exception.ResourceNotFoundException;
 import api_usuario_service.service.UsuarioService;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.retry.annotation.Retry;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,9 +27,16 @@ public class UsuarioController {
         return new ResponseEntity<>(usuario, HttpStatus.CREATED);
     }
 
+    int cantidadReintentos = 1;
+
     @GetMapping("/{usuarioId}")
-    @CircuitBreaker(name = "circuitBreakerRatingHotelFallback", fallbackMethod = "ratingHotelFallback")
+    //@CircuitBreaker(name = "circuitBreakerRatingHotelFallback", fallbackMethod = "ratingHotelFallback")
+    @Retry(name = "circuitBreakerRatingHotelFallback", fallbackMethod = "ratingHotelFallback")
     public ResponseEntity<Usuario> getUsuario(@PathVariable String usuarioId) throws ResourceNotFoundException {
+        log.info("Listar un solo usuario");
+        log.info("Cantidad de reintentos {}", cantidadReintentos);
+        cantidadReintentos ++;
+
         Usuario usuario = usuarioService.getUsuario(usuarioId);
         return new ResponseEntity<>(usuario, HttpStatus.OK);
     }

@@ -56,3 +56,9 @@ resilence4j:
         permittedNumberOfCallsInHalfOpenState: 3
         slidingWindowSize: 10
         slidingWindowType: COUNT_BASE
+
+    retry:                                # Configuracion de reintentos con @Retry
+      instances:
+        circuitBreakerRatingHotelFallback:
+          max-attemps: 3
+          wait-duration: 5s
