@@ -29,3 +29,30 @@ eureka:
     register-with-eureka: true
     service-url:
       defaultZone: http://localhost:8761/eureka
+
+management:
+  health:
+    circuitbreakers:
+      enabled: true
+    endpoints:
+      web:
+        exposure:
+          include: health
+
+    endpoint:
+      health:
+        show-details: always
+
+resilence4j:
+  circuitbreaker:
+    instances:
+      circuitBreakerRatingHotelFallback: # nombre del circuit breaker
+        registerHealthIndicator: true    #
+        eventConsumerBufferSize: 10
+        failureRateThreshold: 50         # Cuando la tasa de fallas es igual o mayor que el umbral, el CircuitBreaker pasa a estado abierto y comienza a cortocircuitar llamadas
+        minimumNumberOfCalls: 5          # Cantidad minima de llamadas que se requieren antes de que CircuitBreaker pueda calcular tasa de error
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 6s
+        permittedNumberOfCallsInHalfOpenState: 3
+        slidingWindowSize: 10
+        slidingWindowType: COUNT_BASE
