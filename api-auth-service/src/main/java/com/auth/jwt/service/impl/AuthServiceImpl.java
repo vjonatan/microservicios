@@ -2,6 +2,7 @@ package com.auth.jwt.service.impl;
 
 import com.auth.jwt.dto.AuthUserDto;
 import com.auth.jwt.dto.NewUserDto;
+import com.auth.jwt.dto.RequestDto;
 import com.auth.jwt.dto.TokenDto;
 import com.auth.jwt.entity.AuthUser;
 import com.auth.jwt.repository.AuthUserRepository;
@@ -38,6 +39,7 @@ public class AuthServiceImpl implements AuthService {
         AuthUser authUser = AuthUser.builder()
                 .userName(newUserDto.getUserName())
                 .password(passwordEncode)
+                .role(newUserDto.getRole())
                 .build();
 
         return authUserRepository.save(authUser);
@@ -59,9 +61,9 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public TokenDto validate(String token) {
+    public TokenDto validate(String token, RequestDto requestDto) {
 
-        if(!jwtProvider.validate(token)){
+        if(!jwtProvider.validate(token, requestDto)){
             return null;
         }
 

@@ -1,9 +1,11 @@
 package com.auth.jwt.security;
 
+import com.auth.jwt.dto.RequestDto;
 import com.auth.jwt.entity.AuthUser;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.security.Key;
@@ -15,6 +17,9 @@ public class JwtProvider {
 
     /*@Value("${jwt.secret}")
     private String secret;*/
+
+    @Autowired
+    RouterValidator routerValidator;
 
     private Key secret;
 
@@ -29,7 +34,7 @@ public class JwtProvider {
 
         Map<String, Object> claims = new HashMap<>();
         claims.put("id", authUser.getId());
-        //claims.put("role")
+        claims.put("role", authUser.getRole());
 
         // Fecha de emision y expiracion del token
         Date now = new Date();
@@ -46,7 +51,7 @@ public class JwtProvider {
     }
 
     // Valida que el token sea correcto
-    public boolean validate(String token) {
+    public boolean validate(String token, RequestDto requestDto) {
         try {
 
             Jwts.parser().verifyWith(Keys.hmacShaKeyFor(secret.getEncoded()))
@@ -56,6 +61,10 @@ public class JwtProvider {
                     .getSubject();
 
         } catch (Exception e) {
+            return false;
+        }
+
+        if(!isAdmin(token) && routerValidator.isAdmin(requestDto)){
             return false;
         }
 
@@ -73,7 +82,15 @@ public class JwtProvider {
                     .getSubject();
 
         } catch (Exception e) {
-            return null;
+            return "Bad Token";
         }
+    }
+
+    private boolean isAdmin(String token){
+        return Jwts.parser().verifyWith(Keys.hmacShaKeyFor(secret.getEncoded()))
+                .build()
+                .parseSignedClaims(token)
+                .getPayload()
+                .get("role").equals("admin");
     }
 }

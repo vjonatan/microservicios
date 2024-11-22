@@ -1,6 +1,7 @@
 package com.api.gateway.config;
 
 //import com.api.gateway.dto.RequestDto;
+import com.api.gateway.dto.RequestDto;
 import com.api.gateway.dto.TokenDto;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
@@ -34,7 +35,8 @@ public class AuthFilter extends AbstractGatewayFilterFactory<AuthFilter.Config> 
             return webClient.build()
                     .post()
                     .uri("http://api-auth-service/auth/validate?token=" + chunks[1])
-                    //.bodyValue(new RequestDto(exchange.getRequest().getPath().toString(),exchange.getRequest().getMethod().toString()))
+                    //bodyValue: contiene la URI y el metodo http para validar
+                    .bodyValue(new RequestDto(exchange.getRequest().getPath().toString(),exchange.getRequest().getMethod().toString()))
                     .retrieve()
                     .bodyToMono(TokenDto.class)
                     .map(t -> {
