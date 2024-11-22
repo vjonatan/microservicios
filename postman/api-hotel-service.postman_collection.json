@@ -1,0 +1,77 @@
+{
+	"info": {
+		"_postman_id": "6054a822-a753-4513-8e1d-2a69068fe7b2",
+		"name": "api-hotel-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4462038"
+	},
+	"item": [
+		{
+			"name": "crear hotel",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\":\"Sheraton\",\n    \"ubicacion\":\"Primitivo De La Reta 123 Ciudad Mendoza\",\n    \"informacion\":\"Hotel Internacional de 5 Estrellas\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/hoteles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"hoteles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener hoteles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/hoteles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"hoteles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener hotel por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/hoteles/b9553a14-32a9-4656-89d2-4d39d0bc424f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"hoteles",
+						"b9553a14-32a9-4656-89d2-4d39d0bc424f"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

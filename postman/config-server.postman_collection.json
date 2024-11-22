@@ -1,0 +1,30 @@
+{
+	"info": {
+		"_postman_id": "89527002-1f2a-44e5-a0b8-c80e4de96635",
+		"name": "config-server",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4462038"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8085/application/prod",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8085/application/prod",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"application",
+						"prod"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

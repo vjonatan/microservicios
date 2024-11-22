@@ -1,0 +1,77 @@
+{
+	"info": {
+		"_postman_id": "e79db15e-f364-4fab-95cc-14ef52643452",
+		"name": "api-usuario-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4462038"
+	},
+	"item": [
+		{
+			"name": "crear usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"agustin@gmail.com\",\n    \"informacion\":\"es un niño con muchas energias y se encuentra en el jardin de 4 años\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/usuarios",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener usuarios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/usuarios",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener usuario",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/usuarios/53c68876-7f4e-4eef-8e08-79d2b4bba882",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"usuarios",
+						"53c68876-7f4e-4eef-8e08-79d2b4bba882"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

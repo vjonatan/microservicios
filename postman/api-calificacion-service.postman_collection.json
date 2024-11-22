@@ -1,0 +1,78 @@
+{
+	"info": {
+		"_postman_id": "2859482a-c349-4508-9858-2303f7092062",
+		"name": "api-calificacion-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4462038"
+	},
+	"item": [
+		{
+			"name": "crear calificacion",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"usuarioId\":\"786b7635-6f6f-488e-a0ad-ff096b415e67\",\n    \"hotelId\":\"b9553a14-32a9-4656-89d2-4d39d0bc424f\",\n    \"calificacion\":2,\n    \"observaciones\":\"servicio regular\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/calificaciones",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"calificaciones"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener calificaciones",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/calificaciones",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"calificaciones"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener calificaciones por usuario",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/calificaciones/usuarios/53c68876-7f4e-4eef-8e08-79d2b4bba882",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"calificaciones",
+						"usuarios",
+						"53c68876-7f4e-4eef-8e08-79d2b4bba882"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

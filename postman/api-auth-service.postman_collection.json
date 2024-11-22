@@ -1,0 +1,94 @@
+{
+	"info": {
+		"_postman_id": "c5dd8940-3866-480d-ba18-be58102804b0",
+		"name": "api-auth-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4462038"
+	},
+	"item": [
+		{
+			"name": "create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userName\":\"francisco\",\n    \"password\":\"123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8086/auth/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8086",
+					"path": [
+						"auth",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userName\": \"francisco\",\n    \"password\": \"123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8086/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8086",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "validate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8086/auth/validate?token=eyJhbGciOiJIUzUxMiJ9.eyJpZCI6MSwic3ViIjoiZnJhbmNpc2NvIiwiaWF0IjoxNzMxOTU4MzIzLCJleHAiOjE3MzE5NjE5MjN9.YRSi7mESAq3mz1waHHIZxb8JAKui6czQKNn3kJ-R7ItxuFT4PkhvwpDrv8krI42TXTAKw0xpHqbTm6Bj5cAOxg",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8086",
+					"path": [
+						"auth",
+						"validate"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJpZCI6MSwic3ViIjoiZnJhbmNpc2NvIiwiaWF0IjoxNzMxOTU4MzIzLCJleHAiOjE3MzE5NjE5MjN9.YRSi7mESAq3mz1waHHIZxb8JAKui6czQKNn3kJ-R7ItxuFT4PkhvwpDrv8krI42TXTAKw0xpHqbTm6Bj5cAOxg"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
